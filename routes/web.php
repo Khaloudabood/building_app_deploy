@@ -37,4 +37,8 @@ Route::get('costom/login/{id}', 'CostomAuthController@Costomlogin');
 
 Route::get('issues/list', 'IssuesController@list');
 
+Route::post('issues/import', 'IssuesController@importFromExcel');
+
+Route::view('issue-form', 'excel-import');
+
 Route::get('users','UsersController@export');

@@ -8,6 +8,9 @@ use App\Mail\IssueRequestSubmited;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
+use App\Imports\IssuesImport;
+use App\Imports\UsersImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 
 class IssuesController extends Controller
@@ -48,5 +51,13 @@ class IssuesController extends Controller
     public function test()
     {
         return "This is a test function";
+    }
+
+    public function importFromExcel(Request $request)
+    {
+        //validait file
+        Excel::import(new IssuesImport, $request -> excelFile);
+
+        return "imported successfully" ;
     }
 }
